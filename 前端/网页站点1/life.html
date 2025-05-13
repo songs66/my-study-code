@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的生活</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* 全局样式 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(./imgs/background.jpg);
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            /* 为 body 设置相对定位，以便伪元素基于 body 定位 */
+        }
+ 
+        /* 使用伪元素实现背景图片淡入淡出效果 */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(./imgs/background2.jpg);
+            background-size: cover;
+            background-attachment: fixed;
+            opacity: 0;
+            animation: fade 10s infinite alternate;
+            z-index: -1;
+            /* 将伪元素的 z-index 设置为 -1，使其位于页面内容下方 */
+        }
+ 
+        /* 定义淡入淡出动画 */
+        @keyframes fade {
+            0% {
+                opacity: 0;
+            }
+ 
+            100% {
+                opacity: 1;
+            }
+        }
+ 
+        /* 头部导航样式，设置导航栏的背景、颜色、定位等 */
+        header {
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            color: white;
+            padding: 10px 0;
+            /* 调整内边距，让内容不那么紧凑 */
+            text-align: center;
+ 
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 60;
+            flex-shrink: 0;
+            width: 100%;
+            /* 添加这一行 */
+        }
+ 
+        /* 导航栏列表样式，去除列表默认样式并设置列表项布局 */
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+ 
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+ 
+        /* 导航栏链接样式，设置链接颜色、文本装饰及鼠标悬停效果 */
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+ 
+        nav ul li a:hover {
+            color: #f1c40f;
+            text-decoration: underline;
+        }
+ 
+ 
+        /* 淡入动画关键帧，设置动画开始和结束时的状态 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+ 
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+ 
+        /* 全局样式，设置所有元素的盒模型为 border-box，去除外边距和内边距 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+ 
+        /* 我的生活界面图片墙样式 */
+        /* 目录样式，用于展示我的生活界面的导航目录 */
+        #directory {
+            position: fixed;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            /* 背景颜色为白色，透明度 0.8 */
+            padding: 10px;
+            border-radius: 5px;
+            /* 边框圆角为 5px */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            /* 盒子阴影效果 */
+            z-index: 100;
+        }
+ 
+        /* 目录内链接样式 */
+        #directory a {
+            display: block;
+            margin: 10px 0;
+            /* 上下外边距为 10px */
+            color: #333;
+            /* 文本颜色为深灰色 */
+            text-decoration: none;
+            /* 去除下划线 */
+            transition: color 0.3s ease;
+            /* 颜色过渡效果，时长 0.3 秒，过渡方式为 ease */
+        }
+ 
+        /* 目录内链接鼠标悬停样式 */
+        #directory a:hover {
+            color: #3498db;
+            /* 鼠标悬停时文本颜色变为蓝色 */
+        }
+ 
+        /* 标题样式，用于我的生活界面的各部分标题 */
+        h4 {
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.8);
+            /* 背景颜色为白色，透明度 0.8 */
+            padding: 5px;
+            /* 内边距为 5px */
+            border-radius: 5px;
+            /* 边框圆角为 5px */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            /* 盒子阴影效果 */
+            width: 80%;
+            /* 宽度为父元素的 80% */
+            text-align: center;
+            /* 文本居中对齐 */
+            margin: 15px auto;
+            /* 上下外边距为 15px，左右自动居中 */
+        }
+ 
+        /* 照片墙样式，用于展示我的生活界面的照片墙 */
+        #photo-wall {
+            width: 80%;
+            /* 宽度为父元素的 80% */
+            display: flex;
+            /* 使用 flex 布局 */
+            flex-wrap: wrap;
+            /* 允许元素换行 */
+            justify-content: center;
+            /* 元素水平居中对齐 */
+            gap: 15px;
+            /* 元素之间的间距为 15px */
+            margin-bottom: 15px;
+            /* 底部外边距为 15px */
+        }
+ 
+        /* 照片墙内图片样式 */
+        #photo-wall img {
+            width: calc(25% - 15px);
+            /* 图片宽度为父元素宽度的 25% 减去 15px */
+            padding: 8px;
+            /* 内边距为 8px */
+            background-color: white;
+            /* 背景颜色为白色 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            /* 盒子阴影效果 */
+            border-radius: 5px;
+            /* 边框圆角为 5px */
+            transition: transform 0.3s ease;
+            /* 变换过渡效果，时长 0.3 秒，过渡方式为 ease */
+            transform: rotate(-5deg);
+            /* 初始旋转角度为 -5 度 */
+        }
+ 
+        /* 照片墙内图片鼠标悬停样式 */
+        #photo-wall img:hover {
+            transform: rotate(0deg) scale(1.2);
+            /* 鼠标悬停时旋转至 0 度并放大 1.2 倍 */
+            z-index: 1;
+            /* 提高元素层级，避免被遮挡 */
+        }
+ 
+        /* 图片轮播样式 */
+        #image-slider {
+            width: 80%;
+            /* 适当扩大图片轮换的展示框 */
+            height: 400px;
+            /* 高度为 400px */
+            margin: 0 auto;
+            /* 上下外边距为 0，左右自动居中 */
+            border: 1px solid #ccc;
+            /* 边框为 1px 灰色实线 */
+            position: relative;
+            /* 相对定位 */
+            overflow: hidden;
+            /* 超出部分隐藏 */
+            border-radius: 5px;
+            /* 边框圆角为 5px */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            /* 盒子阴影效果 */
+ 
+        }
+ 
+        /* 图片轮播内图片样式 */
+        #image-slider img {
+            width: 100%;
+            /* 宽度占满父容器 */
+            height: 100%;
+            /* 高度占满父容器 */
+            position: absolute;
+            /* 绝对定位 */
+            opacity: 0;
+            /* 初始透明度为 0 */
+            transition: opacity 0.5s ease;
+            /* 透明度过渡效果，时长 0.5 秒，过渡方式为 ease */
+            object-fit: cover;
+            /* 图片填充方式为覆盖 */
+        }
+ 
+        /* 图片轮播内当前激活图片样式 */
+        #image-slider img.active {
+            opacity: 1;
+            /* 激活图片透明度为 1 */
+        }
+ 
+        /* 图片轮播的导航点样式 */
+        #image-dots {
+            width: 80%;
+            /* 宽度为父元素的 80% */
+            margin: 5px auto;
+            /* 上下外边距为 5px，左右自动居中 */
+            display: flex;
+            /* 使用 flex 布局 */
+            justify-content: center;
+            /* 元素水平居中对齐 */
+            list-style-type: none;
+            /* 去除列表项默认样式 */
+            padding: 0;
+            /* 内边距为 0 */
+        }
+ 
+        /* 图片轮播导航点列表项样式 */
+        #image-dots li {
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+            background: #f1d6d6;
+            /* 背景颜色为灰色 */
+            border-radius: 50%;
+            /* 边框圆角为 50%，即圆形 */
+            cursor: pointer;
+            /* 鼠标指针变为手型 */
+        }
+ 
+        /* 图片轮播当前激活导航点样式 */
+        #image-dots li.active {
+            background: #3498db;
+            /* 激活导航点背景颜色为蓝色 */
+        }
+ 
+        /* 图片轮播文字说明样式 */
+        #image-slider .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 5px;
+            text-align: center;
+            z-index: 10;
+            /* 确保文字说明显示在图片上方 */
+        }
+ 
+        /* 图片轮播左右切换按钮样式 */
+        #image-slider .prev,
+        #image-slider .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 10;
+            /* 确保文字说明显示在图片上方 */
+        }
+        #image-slider .prev {
+            left: 10px;
+        }
+        #image-slider .next {
+            right: 10px;
+        }
+ 
+        /* 视频展示样式 */
+        #video-section {
+            width: 75%;
+            /* 宽度为父元素的 75% */
+            margin: 15px auto;
+            /* 上下外边距为 15px，左右自动居中 */
+        }
+ 
+        /* 视频展示内视频样式 */
+        #video-section video {
+            width: 90%;
+            /* 宽度为父元素的 90% */
+            border-radius: 5px;
+            /* 边框圆角为 5px */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            /* 盒子阴影效果 */
+        }
+ 
+        /* 回到顶部链接样式 */
+        #back-to-top {
+            display: block;
+            margin-top: 20px;
+            color: #3498db;
+            /* 文本颜色为蓝色 */
+            text-decoration: none;/* 去除下划线 */
+            transition: color 0.3s ease;/* 颜色过渡效果，时长 0.3 秒，过渡方式为 ease */
+                    }
+ 
+        /* 回到顶部链接鼠标悬停样式 */
+        #back-to-top:hover {
+            color: #2980b9;
+            /* 鼠标悬停时文本颜色变为深蓝色 */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>个人网站 - 我的生活</h1>
+        <nav>
+            <ul>
+                <li><a href="main.html">主界面</a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr />
+ 
+    <!-- 照片墙 -->
+    <a name="photo-wall"></a>
+    <h4><script type="text/javascript" src="life.js"></script>
+照片墙</h4>
+    <div id="photo-wall">
+        <img src="imgs/1.jpg" alt="" />
+        <img src="imgs/2.jpg" alt="" />
+        <img src="imgs/3.jpg" alt="" />
+        <img src="imgs/4.jpg" alt="" /><br />
+        <img src="imgs/5.jpg" alt="" />
+        <img src="imgs/6.jpg" alt="" />
+        <img src="imgs/7.jpg" alt="" />
+        <img src="imgs/8.jpg" alt="" />
+    </div>
+    <!-- 图片轮播 -->
+    <a name="image-slider"></a>
+    <h4>图片轮播</h4>
+    <div id="image-slider">
+        <div class="prev">&lt;</div>
+        <div class="next">&gt;</div>
+        <img src="imgs/1.jpg" alt="" data-caption="生活碎片一" />
+        <img src="imgs/2.jpg" alt="" data-caption="生活碎片二" />
+        <img src="imgs/9.jpg" alt="" data-caption="生活碎片三" />
+        <img src="imgs/10.jpg" alt="" data-caption="生活碎片四" />
+        <img src="imgs/11.jpg" alt="" data-caption="生活碎片五" />
+        <img src="imgs/12.jpg" alt="" data-caption="生活碎片六" />
+        <div class="caption"></div>
+    </div>
+    <ul id="image-dots"></ul>
+ 
+    <!-- 视频展示 -->
+    <a name="video-section"></a>
+    <h4>视频展示</h4>
+    <div id="video-section">
+        <video src="imgs/life.mp4" controls></video>
+    </div>
+ 
+    <div id="directory">
+ 
+        <a href="#photo-wall">照片墙</a>
+        <a href="#image-slider">图片轮播</a>
+        <a href="#video-section">视频展示</a>
+        <a id="back-to-top" href="#">回到顶部</a>
+    </div>
+</body>
+</html>

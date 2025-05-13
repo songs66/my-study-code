@@ -1,0 +1,224 @@
+@charset "utf-8";
+/* 整体注册容器样式 */
+.register-container {
+    width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    /* 整个容器竖向渐变效果 */
+    background: linear-gradient(to bottom, #e6f7ff, #c9e2ff);
+    border: 1px solid #b3d9ff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+ 
+/* 注册标题样式 */
+.register-container h2 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+    /* 增加标题与下方内容的间距 */
+}
+ 
+/* 规则弹窗样式 */
+.rule-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 25px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+ 
+/* 规则弹窗标题样式 */
+.rule-popup h3 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+ 
+/* 规则弹窗段落样式 */
+.rule-popup p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+ 
+/* 规则弹窗关闭按钮样式 */
+.rule-popup button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 8px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+ 
+.rule-popup button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+ 
+/* 查看规则按钮样式 */
+.rule-button {
+    display: block;
+    margin: 10px auto 20px;
+    /* 调整按钮下方间距 */
+    padding: 10px 20px;
+    background: linear-gradient(to right, #3498db, #2980b9);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+ 
+.rule-button:hover {
+    background: linear-gradient(to right, #2980b9, #2173a8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+}
+ 
+/* 表单组样式 */
+.form-group {
+    margin-bottom: 20px;
+    /* 增加表单组之间的间距 */
+}
+ 
+/* 表单标签样式 */
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    /* 增加标签与输入框的间距 */
+    color: #666;
+    font-size: 18px;
+}
+ 
+/* 带图标输入框容器样式 */
+.input-with-icon {
+    position: relative;
+}
+ 
+/* 输入框图标样式 */
+.input-with-icon i {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    /* 调整图标水平位置，增大与边框间距 */
+    transform: translateY(-50%);
+    color: #999;
+}
+ 
+/* 输入框样式 */
+.input-with-icon input {
+    width: 100%;
+    padding: 12px 30px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+}
+ 
+/* 验证码输入框单独样式调整 */
+#code {
+    padding: 12px;
+    width: 200px;
+    /* 调整验证码输入框宽度 */
+}
+ 
+/* 密码可见图标样式 */
+.show-password {
+    position: absolute;
+    top: 50%;
+    left: 200px;
+    /* 调整密码可见图标位置，避免重叠 */
+    transform: translateY(-50%);
+    color: #999;
+    cursor: pointer;
+}
+ 
+/* 错误信息样式 */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    /* 增加错误信息与输入框的间距 */
+}
+ 
+/* 同意协议组样式 */
+.agree-group {
+    display: flex;
+    align-items: center;
+}
+ 
+/* 同意协议复选框样式 */
+.agree-group input {
+    margin-right: 8px;
+}
+ 
+/* 提交按钮样式 */
+#sub {
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-bottom: 10px;
+    /* 增加提交按钮与下方内容的间距 */
+}
+ 
+/* 提交按钮禁用状态样式 */
+#sub:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+ 
+/* 重置按钮样式 */
+.reset-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 18px;
+}
+ 
+/* 登录链接样式 */
+.login-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    /* 增加登录链接与上方内容的间距 */
+    color: #3498db;
+    text-decoration: none;
+    font-size: 16px;
+}
+ 
+/* 下拉框样式 */
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员中心 - 图书管理系统</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <h1>图书管理系统</h1>
+        <button onclick="logout()">退出登录</button>
+    </nav>
+
+    <div class="management-section">
+        <h2>添加新书</h2>
+        <div class="book-form">
+            <input type="text" id="bookTitle" placeholder="书名">
+            <input type="text" id="bookAuthor" placeholder="作者">
+            <input type="text" id="bookISBN" placeholder="ISBN">
+            <button onclick="addBook()">添加图书</button>
+        </div>
+
+        <h2>库存管理</h2>
+        <div class="book-list">
+            <table id="inventoryTable">
+                <thead>
+                    <tr>
+                        <th>书名</th>
+                        <th>作者</th>
+                        <th>ISBN</th>
+                        <th>库存数量</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

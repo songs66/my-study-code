@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>学习HTML5</title>
+
+    <script>
+        document.createElement("myHero")
+    </script>
+
+    <style>
+        myHero {
+            display: block;
+            background-color: #ddd;
+            padding: 50px;
+            font-size: 30px;
+        }
+    </style>
+    <style type="text/css">
+        #div1, #div2 {
+            float:left;
+            width:100px;
+            height:35px;
+            margin:10px;
+            padding:10px;
+            border:1px solid #aaaaaa;
+        }
+    </style>
+
+</head>
+
+<body>
+<h3>添加视频</h3>
+<video width="320" height="240" controls>
+    <source src="movie.mp4" type="video/mp4">
+    <source src="movie.ogg" type="video/ogg">
+    你的浏览器不支持 video 标签。
+</video>
+<hr/>
+
+<myHero>我的第一个新元素</myHero>
+
+<p>进度条</p>
+<progress value="66" max="100">
+</progress>
+
+<p>画布(canvas)</p>
+<canvas id="myCanvas" width="200" height="100"
+        style="border:1px solid #000000;">
+</canvas>
+<script>
+    const c1 = document.getElementById("myCanvas");
+    const ctx1 = c1.getContext("2d");
+    ctx1.fillStyle="#a6ec96";
+    ctx1.fillRect(0,0,150,75);
+
+    const c2 = document.getElementById("myCanvas");
+    const ctx2 = c2.getContext("2d");
+    ctx2.beginPath();
+    ctx2.arc(95,50,40,0,2*Math.PI);
+    ctx2.stroke();
+
+    const c3 = document.getElementById("myCanvas");
+    const ctx3 = c3.getContext("2d");
+    ctx3.font="30px Arial";
+    ctx3.strokeText("Hello World",10,50);
+</script>
+
+<p>可伸缩矢量图形(SVG)</p>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="190">
+    <polygon points="100,10 40,180 190,60 10,60 160,180"
+             style="fill:#f3e825;stroke:#ff0000;stroke-width:5;fill-rule:evenodd;">
+    </polygon>
+</svg>
+
+<p>数学表达式(MathML)</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+
+    <mrow>
+        <mrow>
+            <msup>
+                <mi>x</mi>
+                <mn>2</mn>
+            </msup>
+            <mo>+</mo>
+            <mrow>
+                <mn>4</mn>
+                <mi>x</mi>
+            </mrow>
+            <mo>+</mo>
+            <mn>4</mn>
+        </mrow>
+        <mo>=</mo>
+        <mn>0</mn>
+    </mrow>
+</math>
+<hr/>
+
+<p>网页内容拖放</p>
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <img src="/images/logo.png" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31" alt="图片暂时无法显示"></div>
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<script>
+    function allowDrop(ev) 
+    {
+        ev.preventDefault();
+    }
+    function drag(ev) 
+    {
+        ev.dataTransfer.setData("Text",ev.target.id);
+    }
+    function drop(ev) 
+    {
+        ev.preventDefault();
+        const data = ev.dataTransfer.getData("Text");
+        ev.target.appendChild(document.getElementById(data));
+    }
+</script>
+<br/><br/><br/><br/><br/><hr/>
+
+<p>地理定位</p>
+<p id="demo">点击按钮获取您当前坐标（可能需要比较长的时间获取）：</p>
+<button onclick="getLocation()">点我</button>
+<div id="mapholder"></div>
+<script src="https://api.map.baidu.com/api?v=2.0&ak=7a6QKaIilZftIMmKGAFLG7QT1GLfIncg"></script>
+<script>
+    var x=document.getElementById("demo");
+    function getLocation()
+    {
+        if (navigator.geolocation)
+        {
+            navigator.geolocation.getCurrentPosition(showPosition,showError);
+        }
+        else
+        {
+            x.innerHTML="该浏览器不支持获取地理位置。";
+        }
+    }
+    function showPosition(position)
+    {
+        lat=position.coords.latitude;
+        lon=position.coords.longitude;
+        latlon=new google.maps.LatLng(lat, lon)
+        mapholder=document.getElementById('mapholder')
+        mapholder.style.height='250px';
+        mapholder.style.width='500px';
+        var myOptions={
+            center:latlon,zoom:14,
+            mapTypeId:google.maps.MapTypeId.ROADMAP,
+            mapTypeControl:false,
+            navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
+        };
+        var map=new google.maps.Map(document.getElementById("mapholder"),myOptions);
+        var marker=new google.maps.Marker({position:latlon,map:map,title:"You are here!"});
+    }
+    function showError(error)
+    {
+        switch(error.code)
+        {
+            case error.PERMISSION_DENIED:
+                x.innerHTML="用户拒绝对获取地理位置的请求。"
+                break;
+            case error.POSITION_UNAVAILABLE:
+                x.innerHTML="位置信息是不可用的。"
+                break;
+            case error.TIMEOUT:
+                x.innerHTML="请求用户地理位置超时。"
+                break;
+            case error.UNKNOWN_ERROR:
+                x.innerHTML="未知错误。"
+                break;
+        }
+    }
+</script>
+<hr/>
+
+<p>视频自带控件与自制控件</p>
+<div style="text-align:center">
+    <button onclick="playPause()">播放/暂停</button>
+    <button onclick="makeBig()">放大</button>
+    <button onclick="makeSmall()">缩小</button>
+    <button onclick="makeNormal()">普通</button>
+    <br>
+    <video id="video1" width="420" controls>
+        <source src="mov_bbb.mp4" type="video/mp4">
+        <source src="mov_bbb.ogg" type="video/ogg">
+        您的浏览器不支持 HTML5 video 标签。
+    </video>
+</div>
+<script>
+    const myVideo = document.getElementById("video1");
+    function playPause()
+    {
+        if (myVideo.paused)
+            myVideo.play();
+        else
+            myVideo.pause();
+    }
+    function makeBig()
+    {
+        myVideo.width=560;
+    }
+    function makeSmall()
+    {
+        myVideo.width=320;
+    }
+    function makeNormal()
+    {
+        myVideo.width=420;
+    }
+</script>
+<p>视频添加字幕文件</p>
+<video controls width="320" height="240"
+       src="/video/php/friday.mp4">
+    <track default
+           kind="captions"
+           srclang="en"
+           src="/video/php/friday.vtt" />
+    抱歉，您的浏览器不支持嵌入视频！
+</video>
+<br/>
+<audio controls>
+    <source src="horse.ogg" type="audio/ogg">
+    <source src="horse.mp3" type="audio/mpeg">
+    您的浏览器不支持 audio 元素。
+</audio>
+<hr/>
+
+<p>HTML5新的Input类型</p>
+<form action="" method="post">
+    选择你喜欢的颜色: <label>
+        <input type="color" name="favcolor">
+    </label>
+    生日: <label>
+        <input type="date" name="bday">
+    </label>
+    生日 (日期和时间): <label>
+    <input type="date" name="bdaytime">
+</label>
+    生日 (日期和时间): <label>
+    <input type="datetime-local" name="bdaytime">
+    E-mail:
+</label>
+    E-mail: <label>
+    <input type="email" name="email">
+    生日 (月和年):
+</label>
+    生日 (月和年): <label>
+    <input type="month" name="bdaymonth">
+</label>
+    数量 ( 1 到 5 之间 ): <label>
+    <input type="number" name="quantity" min="1" max="5">
+</label>
+    数量 (0 3 6 9 ): <label>
+    <input type="number" name="points" min="0" max="10" step="3" value="6">
+</label>
+    Search Google: <label>
+    <input type="search" name="googlesearch">
+</label>
+    电话号码: <label>
+    <input type="tel" name="usrtel">
+</label>
+    选择时间: <label>
+    <input type="time" name="usr_time">
+</label>
+    添加您的主页: <label>
+    <input type="url" name="homepage">
+</label>
+    选择周:<label>
+        <input type="week" name="week_year">
+    </label>
+</form>
+<br/>
+<form action="" method="get">
+    <label for="browsers">浏览器类型</label>
+    <input id="browsers" list="browsers1" name="browser">
+    <datalist id="browsers1">
+        <option value="Internet Explorer">
+        <option value="Firefox">
+        <option value="Chrome">
+        <option value="Opera">
+        <option value="Safari">
+    </datalist>
+    <input type="submit">
+</form>
+<br/>
+<p>具有运算功能的输出</p>
+<form oninput="x.value=parseInt(a.value)+parseInt(b.value)">
+    0<label><input type="range" id="a" value="50"></label>100
+    +<label><input type="number" id="b" value="50"></label>
+    =<output name="x" for="a b"></output>
+</form>
+<p>第二次自动完成</p>
+<form action="" autocomplete="on">
+    First name:<input type="text" name="fname"><br>
+    Last name: <input type="text" name="lname"><br>
+    E-mail: <input type="email" name="email" autocomplete="off"><br>
+    <input type="submit">
+</form>
+<p>无需验证提交表单数据</p>
+<form action="" novalidate>
+    E-mail: <input type="email" name="user_email">
+    <input type="submit">
+</form>
+<p>输入框自动聚焦</p>
+<form action="">
+    First name: <input type="text" name="fname" autofocus><br>
+    Last name: <input type="text" name="lname"><br>
+    <input type="submit">
+</form>
+<p>form 属性规定输入域所属的一个或多个表单</p>
+<form action="" id="form1">
+    First name: <input type="text" name="fname">
+    <br>
+    <input type="submit" value="提交">
+</form>
+<p> "Last name" 字段没有在 form 表单之内，但它也是 form 表单的一部分。</p>
+Last name: <input type="text" name="lname" form="form1">
+<p>重新定义提交地址</p>
+<form action="demo-form.php">
+    First name: <input type="text" name="fname"><br>
+    Last name: <input type="text" name="lname"><br>
+    <input type="submit" value="提交">
+    <br>
+    <input type="submit" formaction="demo-admin.php" value="提交">
+    <br/>
+    <input type="image" src="demo-form.php" alt="无法显示图片" formaction="demo-form.php" formmethod="post" value="提交">
+    <br/>
+    <input type="submit" formnovalidate value="不验证提交数据">
+</form>
+<p style="color: #40B3DF">表单提交数据接收后的展示形式</p>
+<form action="">
+    First name: <input type="text" name="fname"><br>
+    Last name: <input type="text" name="lname"><br>
+    <input type="submit" value="正常提交">
+    <input type="submit" formtarget="_blank" value="提交到一个新的页面上">
+</form>
+<p>定义图像提交的大小</p>
+<form action="demo-form.php">
+    First name: <input type="text" name="fname"><br>
+    Last name: <input type="text" name="lname"><br>
+    <input type="image" src="img_submit.gif"  alt="Submit" width="48" height="48">
+</form>
+<p>提交多个图像</p>
+<form action="demo-form.php">
+    选择图片: <input type="file" name="img" multiple>
+    <input type="submit">
+</form>
+<p>自定义验证元素的值</p>
+<form action="demo-form.php">
+    Country code: <input type="text" name="country_code" pattern="[A-Za-z]{3}" title="三个字母代表国家">
+    <input type="submit">
+</form>
+<p>输入框描述</p>
+<form action="demo-form.php">
+    <input type="text" name="fname" placeholder="性"><br>
+    <input type="text" name="lname" placeholder="名"><br>
+    <input type="submit" value="提交">
+</form>
+
+<p>独立流内容（图片 图表 代码等）</p>
+<figure>
+    <img src="img_pulpit.jpg" alt="The Pulpit Rock" width="304" height="228">
+    <figcaption>图片介绍</figcaption>
+</figure>
+<hr/>
+
+<p>Web存储</p>
+<script>
+    function clickCounter1()
+    {
+        if(typeof(Storage)!=="undefined")
+        {
+            if (localStorage.clickcount)
+            {
+                localStorage.clickcount=Number(localStorage.clickcount)+1;
+            }
+            else
+            {
+                localStorage.clickcount=1;
+            }
+            document.getElementById("result1").innerHTML=" 你已经点击了按钮 " + localStorage.clickcount + " 次 ";
+        }
+        else
+        {
+            document.getElementById("result1").innerHTML="对不起，您的浏览器不支持 web 存储。";
+        }
+    }
+    function clickCounter2()
+    {
+        if(typeof(Storage)!=="undefined")
+        {
+            if (sessionStorage.clickcount)
+            {
+                sessionStorage.clickcount=Number(sessionStorage.clickcount)+1;
+            }
+            else
+            {
+                sessionStorage.clickcount=1;
+            }
+            document.getElementById("result2").innerHTML="在这个会话中你已经点击了该按钮 " + sessionStorage.clickcount + " 次 ";
+        }
+        else
+        {
+            document.getElementById("result2").innerHTML="抱歉，您的浏览器不支持 web 存储";
+        }
+    }
+</script>
+<p><button onclick="clickCounter1()" type="button">点我！</button></p>
+<div id="result1"></div>
+<p>点击该按钮查看计数器的增加。</p>
+<p>关闭浏览器选项卡(或窗口),重新打开此页面,计数器将继续计数(不是重置)。</p>
+<p><button onclick="clickCounter2()" type="button">点我！</button></p>
+<div id="result2"></div>
+<p>点击该按钮查看计数器的增加。</p>
+<p>关闭浏览器选项卡(或窗口),重新打开此页面,计数器将重置。</p>
+
+<div style="border: 2px dashed #ccc;width:320px;text-align:center;">
+    <label for="sitename">网站名(key)：</label>
+    <input type="text" id="sitename" name="sitename" class="text"/>
+    <br/>
+    <label for="siteurl">网 址(value)：</label>
+    <input type="text" id="siteurl" name="siteurl"/>
+    <br/>
+    <input type="button" onclick="save()" value="新增记录"/>
+    <hr/>
+    <label for="search_site">输入网站名：</label>
+    <input type="text" id="search_site" name="search_site"/>
+    <input type="button" onclick="find()" value="查找网站"/>
+    <p id="find_result"><br/></p>
+</div>
+<br/>
+<div id="list">
+</div>
+<script>
+    // 载入所有存储在localStorage的数据
+    loadAll();
+    //保存数据
+    function save()
+    {
+        const siteurl = document.getElementById("siteurl").value;
+        const sitename = document.getElementById("sitename").value;
+        localStorage.setItem(sitename, siteurl);
+        alert("添加成功");
+        loadAll();
+    }
+    //查找数据
+    function find()
+    {
+        const search_site = document.getElementById("search_site").value;
+        const siteurl = localStorage.getItem(search_site);
+        const find_result = document.getElementById("find_result");
+        find_result.innerHTML = search_site + "的网址是：" + siteurl;
+    }
+    //删除数据
+    function del(name)
+    {
+        localStorage.removeItem(name);
+        alert("删除成功!");
+        loadAll();
+    }
+    //将所有存储在localStorage中的对象提取出来，并展现到界面上
+    function loadAll()
+    {
+        const list = document.getElementById("list");
+        if(localStorage.length>0)
+        {
+            let result = "<table border='1'>";
+            result += "<tr><td>key</td><td>value</td></tr>";
+            for(let i=0; i<localStorage.length; i++)
+            {
+                const sitename = localStorage.key(i);
+                const siteurl = localStorage.getItem(sitename);
+                result += "<tr><td>"+sitename+"</td><td>"+siteurl+"</td><td><input type=button value=删除 onclick=del("+"'"+sitename+"'"+") ></td></tr>";
+            }
+            result += "</table>";
+            list.innerHTML = result;
+        }
+        else
+        {
+            list.innerHTML = "数据为空……";
+        }
+    }
+</script>
+<hr/>
+
+<p>后台程序(Web Workers)</p>
+<p>计数： <output id="result"></output></p>
+<button onclick="startWorker()">开始工作</button>
+<button onclick="stopWorker()">停止工作</button>
+<script>
+    // let w;
+    // function startWorker() {
+    //     if(typeof(Worker) !== "undefined")
+    //     {
+    //         if(typeof(w) == "undefined")
+    //         {
+    //             w = new Worker("demo_workers.js");
+    //         }
+    //         w.onmessage = function(event)
+    //         {
+    //             document.getElementById("result").innerHTML = event.data;
+    //         };
+    //     }
+    //     else
+    //     {
+    //         document.getElementById("result").innerHTML = "抱歉，你的浏览器不支持 Web Workers...";
+    //     }
+    // }
+    // function stopWorker()
+    // {
+    //     w.terminate();
+    //     w = undefined;
+    // }
+    let w;
+    function startWorker()
+    {
+        if (typeof Worker !== "undefined")
+        {
+            if (typeof w == "undefined")
+            {
+                // 创建一个 Blob，包含 Worker 的代码
+                const workerScript = `
+                var i = 0;
+
+                function timedCount() {
+                    i = i + 1;
+                    postMessage(i);
+                    setTimeout(timedCount, 500);
+                }
+
+                timedCount();
+            `;
+                // 创建一个 Blob 对象，并指定类型为 JavaScript
+                const blob = new Blob([workerScript], { type: "text/javascript" });
+                // 创建一个 URL 对象，指向这个 Blob
+                const workerURL = URL.createObjectURL(blob);
+                // 使用这个 URL 创建 Worker
+                w = new Worker(workerURL);
+                // 监听 Worker 发来的消息
+                w.onmessage = function (event)
+                {
+                    document.getElementById("result").innerHTML = event.data;
+                };
+            }
+        }
+        else
+        {
+            document.getElementById("result").innerHTML = "抱歉，你的浏览器不支持 Web Workers...";
+        }
+    }
+    function stopWorker()
+    {
+        if (w)
+        {
+            w.terminate();
+            w = undefined;
+        }
+    }
+</script>
+<hr/>
+
+<p>获取服务端更新数据</p>
+<div id="result0"></div>
+<script>
+    if(typeof(EventSource)!=="undefined")
+    {
+        const source = new EventSource("demo_sse.php");
+        source.onmessage=function(event)
+        {
+            document.getElementById("result0").innerHTML+=event.data + "<br>";
+        };
+    }
+    else
+    {
+        document.getElementById("result0").innerHTML="抱歉，你的浏览器不支持 server-sent 事件...";
+    }
+    // demo_see.php的代码为
+    // <?php
+    // header('Content-Type: text/event-stream');
+    // header('Cache-Control: no-cache');
+    //
+    // //发送事件流数据
+    // $time = date('r');// 获取当前时间
+    // echo "data: The server time is: {$time}\n\n";// 发送数据
+    // flush();// 确保数据立即发送
+    // ?>
+</script>
+<hr/>
+
+
+
+</body>
+</html>

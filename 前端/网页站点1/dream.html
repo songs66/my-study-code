@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的理想</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 我的理想界面列表样式 */
+        /* 容器样式，用于包裹整个我的理想界面内容 */
+        .container {
+            margin: 80px auto;
+            /* 上下外边距 80px，左右自动居中 */
+            width: 90%;
+            /* 宽度为父元素的 90% */
+            max-width: 1000px;
+            /* 最大宽度为 1000px */
+            background-color: rgba(255, 255, 255, 0.8);
+            /* 背景颜色为白色，透明度 0.8 */
+            border-radius: 10px;
+            /* 边框圆角为 10px */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            /* 盒子阴影效果 */
+            padding: 20px;
+            /* 内边距为 20px */
+            margin-top: 100px;
+ 
+        }
+ 
+        /* 我的理想界面的标题样式 */
+        h2 {
+            text-align: center;
+            /* 文本居中对齐 */
+            margin-bottom: 20px;
+            /* 底部外边距为 20px */
+            color: #333;
+            /* 文本颜色为深灰色 */
+        }
+ 
+        /* 梦想表格样式，用于展示梦想相关内容 */
+        .dream-table {
+            width: 100%;
+            /* 宽度占满父容器 */
+            border-collapse: collapse;
+            /* 表格边框合并 */
+        }
+ 
+        /* 梦想表格表头样式，设置表头的布局方式，但此处代码设置未生效（th 是行内块元素，需 display:flex 才生效） */
+        .dream-table th {
+            justify-content: center;
+            align-items: center;
+        }
+ 
+        /* 梦想表格单元格样式 */
+        .dream-table td {
+            border: 1px solid #ccc;
+            /* 边框为 1px 灰色实线 */
+            padding: 10px;
+            /* 内边距为 10px */
+            text-align: left;
+            /* 文本左对齐 */
+        }
+ 
+        /* 梦想表格表头背景样式 */
+        .dream-table th {
+            background-color: #f0f0f0;
+            /* 表头背景颜色为浅灰色 */
+        }
+ 
+        /* 梦想表格内有序列表样式 */
+        .dream-table ol {
+            margin: 0;
+            /* 外边距为 0 */
+            padding-left: 20px;
+            /* 左侧内边距为 20px */
+        }
+    </style>
+</head>
+ 
+<body>
+    <header>
+        <h1>个人网站 - 我的理想</h1>
+        <nav>
+            <ul>
+                <li><a href="main.html">主界面</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>我的理想清单</h2>
+        <table class="dream-table">
+            <thead>
+                <tr>
+                    <th>理想</th>
+                    <th>具体描述</th>
+                    <th>实现步骤</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>成为优秀的工程师</td>
+                    <td>掌握前沿的技术知识，能够独立承担复杂的工程项目。开发出具有创新性和实用性的软件或系统，为企业和社会创造价值。在行业内获得一定的声誉和认可。</td>
+                    <td>
+                        <ol>
+                            <li>深入学习专业知识，如编程语言、算法设计等。</li>
+                            <li>参与实际项目，积累项目经验。</li>
+                            <li>关注行业动态，不断学习新技术。</li>
+                            <li>发表技术文章或参与开源项目，提升个人影响力。</li>
+                        </ol>
+                    </td>
+                </tr>
+                <tr>
+                    <td>环游世界</td>
+                    <td>亲身感受不同国家和地区的风土人情、历史文化和自然风光。体验各种独特的生活方式，拓宽自己的视野和思维方式。结交来自世界各地的朋友，丰富人生阅历。</td>
+                    <td>
+                        <ol>
+                            <li>制定旅行计划，确定想去的国家和地区。</li>
+                            <li>学习目的地的语言和文化知识。</li>
+                            <li>节省资金，为旅行做好经济准备。</li>
+                            <li>逐步实现旅行目标，从周边国家开始，逐渐扩展到更远的地方。</li>
+                        </ol>
+                    </td>
+                </tr>
+                <tr>
+                    <td>帮助更多的人</td>
+                    <td>利用自己的专业技能和资源，为弱势群体提供帮助和支持。参与公益活动，改善他们的生活条件和发展机会。通过自己的行动，传递正能量，带动更多人关注和参与公益事业。</td>
+                    <td>
+                        <ol>
+                            <li>加入公益组织，参与志愿服务活动。</li>
+                            <li>发挥专业优势，为有需要的人提供技术支持或培训。</li>
+                            <li>组织或参与募捐活动，为公益项目筹集资金。</li>
+                            <li>宣传公益理念，提高公众对公益事业的认识和参与度。</li>
+                        </ol>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+ 
+</html>

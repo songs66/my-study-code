@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>待办事项列表</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>我的待办事项</h1>
+        <div class="input-group">
+            <input 
+                v-model="newTodo" 
+                @keyup.enter="addTodo"
+                placeholder="输入任务后按回车"
+                class="task-input"
+            >
+            <button @click="addTodo" class="add-btn">
+                ➕ 添加
+            </button>
+        </div>
+        <ul class="todo-list">
+            <li 
+                v-for="(todo, index) in todos" 
+                :key="index"
+                class="todo-item"
+            >
+                <span>{{ todo.text }}</span>
+                <button 
+                    @click="removeTodo(index)"
+                    class="delete-btn"
+                >
+                    ❌ 删除
+                </button>
+            </li>
+        </ul>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!doctype html>
+
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>学习HTML</title>
+    <base href="https://www.bilibili.com" target="_blank">
+    <link rel="stylesheet" href="css/reset.css">
+
+    <style type="text/css">
+        body
+        {
+            background-color: #dff4da;
+        }
+        p
+        {
+            color: #27273c
+        }
+    </style>
+
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js">
+    </script>
+</head>
+
+<body>
+<div id="header" style="background-color:#c5f1bb;position:fixed;top:0;left:0;width:100%;height:60px;">
+    <h4>主要的网页标题</h4>
+</div>87
+
+<div id="占空" style="background-color:#dff4da;top:0;left:0;width:100%;height:60px;">
+</div>
+
+<h1 id="0">我的第一个标题</h1>
+<h2 id="1">This is a heading1</h2>
+<h3 id='2'>This is a heading2</h3>
+<h6 style="color:blue;font-size: 20px">This is a heading3</h6>
+<h1 style="color:#8000ff">This is a heading4</h1>
+<p title="鼠标悬停功能测试">我的第一个段落</p>
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+<a href="https://www.baidu.com" >
+    <img src=" https://www.runoob.com/images/pulpit.jpg" width="104" height="142" alt="图像无法显示"/>
+    <br/>
+    This is a link</a>
+<br/>
+<button onclick="alert('Button clicked!')">Click Me</button>
+<div onmouseover="this.style.backgroundColor='red'">Hover over me</div>
+<hr/>
+
+<h1>这是1号标题</h1>
+<span style="font-size: x-large; color: red; ">这是6号字体文本</span>
+<h2>这是2号标题</h2>
+<span style="font-size: large; color: aqua; ">这是5号字体文本</span>
+<h3>这是3号标题</h3>
+<span style="font-size: medium; ">这是4号字体文本</span>
+<h4>这是4号标题</h4>
+<span style="font-size: small; ">这是3号字体文本</span>
+<h5>这是5号标题</h5>
+<span style="font-size: x-small; ">这是2号字体文本</span>
+<h6>这是6号标题</h6>
+<span style="font-size: xx-small; ">这是1号字体文本</span>
+<hr/>
+
+<h1>春晓</h1>
+<p>春<strong>眠不觉</strong>晓,<br/>处<em>处闻啼</em>鸟.<br/>夜来风雨声,<br/>花落知多少。</p>
+<p>我有下标<sub>下标</sub></p>
+<p>我有上标<sup>上标</sup></p>
+<p>这<del>是一段删除</del>字</p>
+<p><bdo dir="rtl">这是一段倒序的字</bdo></p>
+<code>一段电脑代码 print("Hello World")</code>
+<hr/>
+
+<a href="#0">跳转到第一句话</a>
+<br/>
+<a href="https://www.baidu.com" target="_blank">新建窗口打开</a>
+<a href="https://www.baidu.com" target="_self">当前窗口打开</a>
+<a href="https://www.baidu.com" target="_parent">父窗口加载</a>
+<a href="https://www.baidu.com" target="_top">整个浏览器窗口加载</a>
+<br/>
+<a id="tips">插入书签</a>
+<a href="#tips">跳转到书签</a>
+<a href="">打开默认链接</a>
+<hr/>
+
+<div style="opacity:0.5;position:absolute;left:50px;width:300px;height:150px;background-color:#40B3DF"></div>
+<div style="font-family:verdana,serif;padding:20px;border-radius:10px;border:10px solid #EE872A;">
+    <div style="opacity:0.3;position:absolute;left:120px;width:100px;height:100px;background-color:#8AC007"></div>
+    <h3>Look! Styles and colors</h3>
+    <div style="letter-spacing:12px;">Manipulate Text</div>
+    <div style="color:#40B3DF;">Colors
+        <span style="background-color:#B4009E;color:#ffffff;">Boxes</span>
+    </div>
+    <div style="color:#000000;">and more...</div>
+</div>
+
+<a href="https://www.baidu.com" style="text-decoration:none;">没有下划线的链接</a>
+<hr/>
+
+<p>
+    <img src="smiley.gif" alt="Smiley face" style="float:left" width="32" height="32"> 一个带图片的段落，图片浮动在这个文本的左边。
+</p>
+<p>
+    <img src="smiley.gif" alt="Smiley face" style="float:right" width="32" height="32"> 一个带图片的段落，图片浮动在这个文本的右边。
+</p>
+<img src="https://www.runoob.com/try/demo_source/planets.gif" width="145" height="126" alt="Planets" usemap="#planet map">
+<map name="planet map">
+    <area shape="rect" coords="0,0,82,126" alt="Sun" href="sun.htm">
+    <area shape="circle" coords="90,58,3" alt="Mercury" href="mercur.htm">
+    <area shape="circle" coords="124,58,8" alt="Venus" href="venus.htm">
+</map>
+<area shape="rect" coords="x1,y1,x2,y2" href=url alt="">
+<area shape="circle" coords="x1,y1,r" href=url alt="">
+<area shape="poly" coords="x1,y1,x2,y2 ......" href=url alt="">
+<hr/>
+
+<table border="1" cellpadding="10" bgcolor="#fffacd">
+    <caption>实例表格</caption>
+    <thead>
+    <tr>
+        <th></th>
+        <th>列1</th>
+        <th>列2</th>
+        <th>列3</th>
+        <th>列4</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+        <th>行1</th>
+        <td>11</td>
+        <td>21</td>
+        <td>31</td>
+        <td>41</td>
+    </tr>
+    <tr>
+        <th>行2</th>
+        <td>12</td>
+        <td>22</td>
+        <td>32</td>
+        <td>42</td>
+    </tr>
+    <tr>
+        <th>行3</th>
+        <td>13</td>
+        <td>23</td>
+        <td>33</td>
+        <td>43</td>
+    </tr>
+    <tr>
+        <th>行4</th>
+        <td>14</td>
+        <td>24</td>
+        <td>34</td>
+        <td>44</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <th>行5</th>
+        <td>15</td>
+        <td>16</td>
+        <td>17</td>
+        <td>18</td>
+    </tr>
+    </tfoot>
+</table>
+<table border="1">
+    <caption>单元格跨两列:</caption>
+    <tr>
+        <th>Name</th>
+        <th colspan="2">Telephone</th>
+    </tr>
+    <tr>
+        <td>Bill Gates</td>
+        <td>555 77 854</td>
+        <td>555 77 855</td>
+    </tr>
+</table>
+<table border="1">
+    <caption>单元格跨两行:</caption>
+    <tr>
+        <th>First Name:</th>
+        <td>Bill Gates</td>
+    </tr>
+    <tr>
+        <th rowspan="2">Telephone:</th>
+        <td>555 77 854</td>
+    </tr>
+    <tr>
+        <td>555 77 855</td>
+    </tr>
+</table>
+<hr/>
+
+<ul style="list-style-type:circle">
+    <li>无序列表</li>
+    <li>第二条</li>
+    <li>第三条</li>
+</ul>
+<ol start="0">
+    <li>有序列表</li>
+    <li>第二条</li>
+    <li>第三条</li>
+</ol>
+<ol type="A" start="1">
+    <li>有序列表</li>
+    <li>第二条</li>
+    <li>第三条</li>
+</ol>
+<h4>一个自定义列表：</h4>
+<dl>
+    <dt>Coffee</dt>
+    <dd>- black hot drink</dd>
+    <dt>Milk</dt>
+    <dd>- white cold drink</dd>
+</dl>
+<hr/>
+
+<h3>表单</h3>
+<form action="" method="post">
+    <fieldset>
+        <legend>Personal information:</legend>
+        <label>
+            Name:
+            <input type="text" size="30">
+        </label><br>
+        <label>
+            E-mail:
+            <input type="text" size="30">
+        </label><br>
+        <label>
+            Date of birth:
+            <input type="text" size="10">
+        </label>
+    </fieldset>
+</form>
+
+<form action="" method="post">
+    <label for="name">用户名：</label>
+    <input type="text" id="name" name="name" required>
+    <br/>
+    <label for="password">密码：</label>
+    <input type="password" id="password" name="password" required>
+    <br/>
+    <label>性别：</label>
+    <input type="radio" id="male" name="gender" value="male" checked>
+    <label for="male">男</label>
+    <input type="radio" id="female" name="gender" value="female" checked>
+    <label for="female">女</label>
+    <br/>
+    <input type="checkbox" name="subscribe" id="subscribe" checked>
+    <label for="subscribe">订阅推送消息</label>
+    <br/>
+    <label for="country">国家</label>
+    <select id="country" name="country">
+        <option value="cn">CN</option>
+        <option value="us">US</option>
+        <option value="au">AU</option>
+    </select>
+    <br/>
+    <label for="text">文本框：</label>
+    <textarea id="text" rows="10" cols="30">请输入文本...</textarea>
+    <br/>
+    <input type="reset" value="重置">
+    <input type="submit" value="提交">
+    <br/>
+    <button onclick="alert('你好')">点击按钮</button>
+</form>
+<hr/>
+
+<iframe src="https://www.baidu.com" frameborder="0" name="option" width="800" height="600"></iframe>
+<p><a href="https://www.runoob.com" rel="noopener" target="option">学习网站</a></p>
+<p><a href="https://www.csdn.net" rel="noopener" target="option">CSDN</a></p>
+<hr/>
+
+<h3>脚本</h3>
+<script>
+    document.write("Hello World!")
+    document.write("<h1>这是一个标题</h1>");
+    document.write("<p>这是一个段落。</p>");
+</script>
+<noscript>抱歉，你的浏览器不支持 JavaScript!</noscript>
+<br/>
+<h1>我的第一个 JavaScript </h1>
+<p id="demo1">JavaScript 可以触发事件，就像按钮点击。</p>
+<p id="demo2">JavaScript 能改变 HTML 元素的样式。</p>
+<script>
+    function myFunction1()
+    {
+        document.getElementById("demo1").innerHTML="Hello JavaScript!";
+    }
+    function myFunction2()
+    {
+        x=document.getElementById("demo2") // 找到元素
+        x.style.color="#ff0000";          // 改变样式
+    }
+</script>
+<button type="button" onclick="myFunction1()">点我改变文字</button>
+<button type="button" onclick="myFunction2()">点击这里改变文字颜色</button>
+<hr/>
+
+<p>字符实体&lt;&nbsp;&reg;&copy;</p>
+
+</body>
+</html>

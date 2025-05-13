@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习内容</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 学习内容界面有序列表样式 */
+        /* 学习列表样式，用于展示学习内容的列表 */
+        .study-list {
+            list-style: none;
+            /* 去除列表项默认样式 */
+            padding: 0;
+            /* 内边距为 0 */
+            margin: 80px auto;
+            /* 上下外边距为 80px，左右自动居中 */
+            width: 80%;
+            /* 宽度为父元素的 80% */
+            max-width: 800px;
+            /* 最大宽度为 800px */
+            margin-top: 100px;
+        }
+ 
+        /* 学习列表项样式 */
+        .study-list li {
+            margin-bottom: 20px;
+            /* 底部外边距为 20px */
+            border: 1px solid #ccc;
+            /* 边框为 1px 灰色实线 */
+            padding: 20px;
+            /* 内边距为 20px */
+            border-radius: 5px;
+            /* 边框圆角为 5px */
+            background-color: white;
+            /* 背景颜色为白色 */
+            display: flex;
+            /* 使用 flex 布局 */
+            align-items: flex-start;
+            /* 元素垂直顶部对齐 */
+        }
+ 
+        /* 学习列表项序号样式 */
+        .list-number {
+            font-size: 24px;
+            /* 字体大小为 24px */
+            font-weight: bold;
+            /* 字体加粗 */
+            margin-right: 20px;
+            /* 右侧外边距为 20px */
+            color: #333;
+            /* 文本颜色为深灰色 */
+        }
+ 
+        /* 学习列表项内容标题样式 */
+        .list-content h3 {
+            margin-top: 0;
+            /* 顶部外边距为 0 */
+        }
+ 
+        /* 学习列表项内容段落样式 */
+        .list-content p {
+            line-height: 1.6;
+            /* 行高为 1.6 倍字体大小 */
+        }
+    </style>
+</head>
+ 
+<body>
+    <header>
+        <h1>个人网站 - 学习内容</h1>
+        <nav>
+            <ul>
+                <li><a href="main.html">主界面</a></li>
+            </ul>
+        </nav>
+    </header>
+    <ol class="study-list">
+        <li>
+            <span class="list-number">1</span>
+            <div class="list-content">
+                <h3>学习 HTML</h3>
+                <p>掌握 HTML 基础标签，如段落标签、标题标签、列表标签等。学习 HTML5 新增特性，包括语义化标签,通过实际项目练习，熟练运用 HTML 构建网页结构。</p>
+            </div>
+        </li>
+        <li>
+            <span class="list-number">2</span>
+            <div class="list-content">
+                <h3>学习 CSS</h3>
+                <p>深入学习 CSS 选择器、盒模型、浮动、定位等基础概念。掌握 CSS3 新增特性，如过渡、动画、弹性布局和网格布局。能够使用 CSS
+                    对网页进行美化和布局设计，实现响应式设计，使网页在不同设备上都能有良好的显示效果。</p>
+            </div>
+        </li>
+        <li>
+            <span class="list-number">3</span>
+            <div class="list-content">
+                <h3>学习 JavaScript</h3>
+                <p>学习 JavaScript 基础语法，包括变量、数据类型、函数、控制语句等。了解 DOM 操作，能够通过 JavaScript
+                    动态修改网页内容和样式。掌握事件处理机制，实现网页的交互效果。学习异步编程，如回调函数、Promise、async/await 等。</p>
+            </div>
+        </li>
+        <li>
+            <span class="list-number">4</span>
+            <div class="list-content">
+                <h3>学习 Vue.js</h3>
+                <p>了解 Vue.js 的基本概念，如组件化开发、响应式原理等。掌握 Vue.js 的核心语法，包括模板语法、计算属性、监听器等。学习 Vue Router 实现单页面应用的路由功能，使用 Vuex
+                    进行状态管理。通过实际项目实践，熟练运用 Vue.js 构建前端应用。</p>
+            </div>
+        </li>
+        <li>
+            <span class="list-number">5</span>
+            <div class="list-content">
+                <h3>学习 Spring Boot</h3>
+                <p>了解 Spring Boot 的自动配置原理，快速搭建 Spring Boot 项目。掌握 Spring Boot 与数据库的集成，如使用 Spring Data JPA 进行数据库操作。学习
+                    Spring Boot 的 RESTful 接口开发，实现前后端的数据交互。掌握 Spring Boot 的日志管理、配置管理等功能。</p>
+            </div>
+        </li>
+        <li>
+            <span class="list-number">6</span>
+            <div class="list-content">
+                <h3>前后端结合开发</h3>
+                <p>学习如何将 Vue.js 前端项目与 Spring Boot 后端项目进行整合，实现前后端分离开发。掌握跨域问题的解决方案，确保前后端数据交互正常。学习使用 Axios
+                    等工具进行前后端的数据请求和响应处理。通过实际项目实践，掌握前后端结合开发的流程和技巧。</p>
+            </div>
+        </li>
+        <li>
+            <span class="list-number">7</span>
+            <div class="list-content">
+                <h3>坚持在 CSDN 发布博客</h3>
+                <p>定期总结学习过程中的知识点和经验，撰写技术博客发布到 CSDN 平台。通过博客分享，加深对知识的理解和掌握，同时提高自己的技术表达能力和影响力。积极参与 CSDN
+                    社区的交流和互动，与其他开发者共同进步。</p>
+            </div>
+        </li>
+        <li>
+            <span class="list-number">8</span>
+            <div class="list-content">
+                <h3>学习新项目和新技术</h3>
+                <p>关注行业动态，学习新的前端和后端技术，如 React、Angular、微服务架构等。参与开源项目，学习优秀的代码结构和设计模式。通过学习新项目和新技术，不断拓宽自己的技术视野，提升自己的技术水平。
+                </p>
+            </div>
+        </li>
+    </ol>
+</body>
+ 
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主界面</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 主界面容器样式，设置溢出处理、宽度和外边距 */
+        .main-container {
+            overflow: auto;
+            width: fit-content;
+            margin: 120px auto;
+        }
+ 
+        /* 主界面盒子样式，设置宽度、浮动、外边距、背景等 */
+        .main-box {
+            width: 300px;
+            float: left;
+            margin: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            padding: 25px;
+        }
+ 
+        /* 主界面盒子内链接样式，设置显示方式、文本装饰和颜色 */
+        .main-box a {
+            display: block;
+            text-decoration: none;
+            color: #333;
+        }
+ 
+        /* 主界面盒子内图片样式，设置宽度、边框和外边距 */
+        .main-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+ 
+        /* 主界面盒子内标题样式，设置显示方式、字体大小、粗细和外边距 */
+        .main-box span {
+            display: block;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+ 
+        /* 主界面盒子内段落样式，设置字体大小、颜色 */
+        .main-box p {
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+ 
+<body>
+    <header>
+        <h1>个人网站 - 主界面</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">返回首页</a></li>
+                <li><a href="resume.html">个人简历</a></li>
+                <li><a href="dream.html">我的理想</a></li>
+                <li><a href="life.html">我的生活</a></li>
+                <li><a href="study.html">学习内容</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="main-container">
+        <div class="main-box">
+            <a href="resume.html">
+                <img src="imgs/1.jpg" alt="个人简历">
+                <span>个人简历</span>
+            </a>
+            <p>查看我的职业经历与技能专长。</p>
+        </div>
+        <div class="main-box">
+            <a href="dream.html">
+                <img src="imgs/2.jpg" alt="我的理想">
+                <span>我的理想</span>
+            </a>
+            <p>了解我对未来的憧憬与目标。</p>
+        </div>
+        <div class="main-box">
+            <a href="life.html">
+                <img src="imgs/3.jpg" alt="我的生活">
+                <span>我的生活</span>
+            </a>
+            <p>分享我的日常点滴与精彩瞬间。</p>
+        </div>
+        <div class="main-box">
+            <a href="study.html">
+                <img src="imgs/4.jpg" alt="学习内容">
+                <span>学习内容</span>
+            </a>
+            <p>探索我正在学习的知识与课程。</p>
+        </div>
+    </div>
+</body>
+ 
+</html>

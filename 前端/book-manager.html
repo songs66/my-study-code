@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>图书管理系统</title>
+    <style>
+        body {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .book-form {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        input[type="text"], input[type="number"] {
+            padding: 8px;
+            width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .book-list {
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .status {
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .read {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .unread {
+            background: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="book-form">
+        <h2>添加新书</h2>
+        <form id="addBookForm">
+            <div class="form-group">
+                <label>书名：</label>
+                <input type="text" id="bookTitle" required>
+            </div>
+            <div class="form-group">
+                <label>作者：</label>
+                <input type="text" id="bookAuthor" required>
+            </div>
+            <div class="form-group">
+                <label>已读？</label>
+                <input type="checkbox" id="bookStatus">
+            </div>
+            <button type="submit">添加书籍</button>
+        </form>
+    </div>
+
+    <div class="book-list">
+        <h2>图书列表</h2>
+        <table id="bookTable">
+            <thead>
+                <tr>
+                    <th>书名</th>
+                    <th>作者</th>
+                    <th>阅读状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="bookListBody">
+                <!-- 书籍列表将动态插入到这里 -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        let books = JSON.parse(localStorage.getItem('books')) || [];
+
+        function saveToLocalStorage() {
+            localStorage.setItem('books', JSON.stringify(books));
+        }
+
+        function renderBooks() {
+            const tbody = document.getElementById('bookListBody');
+            tbody.innerHTML = '';
+
+            books.forEach((book, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${book.title}</td>
+                    <td>${book.author}</td>
+                    <td>
+                        <span class="status ${book.isRead ? 'read' : 'unread'}">
+                            ${book.isRead ? '已读' : '未读'}
+                        </span>
+                    </td>
+                    <td>
+                        <button onclick="toggleStatus(${index})">切换状态</button>
+                        <button onclick="deleteBook(${index})" style="background: #f44336;">删除</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function addBook(event) {
+            event.preventDefault();
+            
+            const book = {
+                title: document.getElementById('bookTitle').value,
+                author: document.getElementById('bookAuthor').value,
+                isRead: document.getElementById('bookStatus').checked
+            };
+
+            books.push(book);
+            saveToLocalStorage();
+            renderBooks();
+            
+            // 清空表单
+            document.getElementById('addBookForm').reset();
+        }
+
+        function toggleStatus(index) {
+            books[index].isRead = !books[index].isRead;
+            saveToLocalStorage();
+            renderBooks();
+        }
+
+        function deleteBook(index) {
+            if (confirm('确定要删除这本书吗？')) {
+                books.splice(index, 1);
+                saveToLocalStorage();
+                renderBooks();
+            }
+        }
+
+        // 初始化
+        document.getElementById('addBookForm').addEventListener('submit', addBook);
+        renderBooks();
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>表单</title>
+</head>
+<body>
+<!--form表单标签-->
+<!--action属性 指向表单提交后显示的页面-->
+<!--method属性 指明表单提交方式-->
+<!--get提交方式时name和值会显示在地址栏里 name数量有限制-->
+<!--post提交方式 name和值不会显示在地址栏里，保密性强 无限制-->
+<form action="11.html" method="get">
+<!--    输入标签input-->
+<!--    属性type 指定输入标签类型-->
+<!--    属性name 只当输入标签名字-->
+<!--    属性value 指定输入标签的值-->
+<!--    属性placeholder 占位符-->
+<!--    required 必填-->
+<!--    text类型 文本-->
+    用户名：<input type="text" name="username" value="123" placeholder="请输入用户名" required/>
+<!--    password类型 可以通过文本显示方式为掩码形式-->
+    <br>
+    <br>
+<!--readonly表示只读-->
+    密码：<input type="password" name="pass" readonly><br><br>
+<!--    number类型可以通过设置min max检查提交数据是否合格-->
+    年龄：<input type="number" min="20" max="40"><br><br>
+<!--    radio单选按钮 name属性值相同的为一组，用value指定单选按钮-->
+    性别：<input type="radio" name="gender" value="女">女
+    <input type="radio" name="gender" value="男">男<br><br>
+<!--    checkbox复选框 那么属性值相同的为一组，value指定复选按钮
+checked默认选中，既可用于单选也可用于多选-->
+    爱好：<input type="checkbox" name="hobby" value="篮球">篮球
+    <input type="checkbox" name="hobby" value="编程" checked>编程
+<!--    disabled表示不能选择-->
+    <input type="checkbox" name="hobby" value="追剧" disabled>追剧
+    <input type="checkbox" name="hobby" value="游戏">游戏<br><br>
+<!--    email是邮箱，在表单提交时有检查限制@符合邮箱格式-->
+    邮箱：<input type="email" name="mail"><br><br>
+<!--    date日期-->
+    日期：<input type="date" name="bir"><br><br>
+<!--    file文件上传-->
+    <input type="file"><br><br>
+<!--select下拉菜单-->
+    省份：<select name=""province>
+    <option value="河北">河北</option>
+    <option value="山东">山东</option>
+    <option value="北京" selected>北京</option>
+<!--    slescted默认选择-->
+    <option value="河南">河南</option>
+</select><br><br>
+<!--    留言板-->
+    留言板：<textarea name="text" cols="5" rows="5">这是留言板</textarea><br><br>
+    <input type="submit" value="提交">
+<!--    图片提交按钮-->
+    <input type="image" src="./image/favicon-2.ico">
+<!--    reset重置按钮-->
+    <input type="reset" value="重置">
+</form>
+</body>
+</html>
+<!--属性是对标签的描述，属性和属性之前用空格隔开
+属性与值之间后=连接-->

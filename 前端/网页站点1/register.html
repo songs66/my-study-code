@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册页面</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link href="register.css" rel="stylesheet" type="text/css">
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+ 
+<body onload="createCode()">
+    <!-- 添加顶部导航栏 -->
+    <header>
+        <h1>个人网站 - 注册</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="login.html">登录</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="register-container">
+        <h2>注册</h2>
+        <div class="rule-popup" id="rule-popup">
+            <h3>填写规则</h3>
+            <p>用户名：2 - 4 位汉字或 8 位纯数字</p>
+            <p>密码：以字母开头，长度为 6 - 8 位，包含字母、数字和下划线</p>
+            <p>手机号：1 开头，第二位为 3、4、5、7、8 的 11 位数字</p>
+            <p>邮箱：符合邮箱格式</p>
+            <p>验证码：6 位字母和数字组合</p>
+            <button onclick="closeRulePopup()">关闭</button>
+        </div>
+        <button class="rule-button" onclick="openRulePopup()">查看填写规则</button>
+        <form id="registerForm" onsubmit="return checkSub()">
+            <div class="form-group">
+                <label for="username">用户名：</label>
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="username" name="username" required onblur="checkUname()" alt="用户名">
+                </div>
+                <span id="usernameSpan" class="error-message">*2 - 4 位汉字或 8 位纯数字</span>
+            </div>
+            <div class="form-group">
+                <label for="password">密码：</label>
+                <div class="input-with-icon">
+                    <input type="password" id="password" name="password" required onblur="checkPwd()">
+                    <i class="fa-solid fa-eye show-password" onclick="togglePasswordVisibility('password')"></i>
+                </div>
+                <span id="passwordStrength" class="error-message"></span>
+                <span id="passwordSpan" class="error-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">确认密码：</label>
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required onblur="checkPwd2()">
+                </div>
+                <span id="confirmPasswordSpan" class="error-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="phone">手机号：</label>
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-phone"></i>
+                    <input type="text" id="phone" name="phone" alt="手机号" onblur="checkPhone()">
+                </div>
+                <span id="phoneSpan" class="error-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="mail">邮箱：</label>
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="text" id="mail" name="mail" alt="邮箱" onblur="checkMail()">
+                </div>
+                <span id="mailSpan" class="error-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="crowd">人群：</label>
+                <select id="crowd" name="crowd" required>
+                    <option value="">请选择人群</option>
+                    <option value="学生">学生</option>
+                    <option value="上班族">上班族</option>
+                    <option value="自由职业者">自由职业者</option>
+                </select>
+
+            </div>
+            <div class="form-group">
+                <label for="nativePlace">籍贯：</label>
+                <select id="nativePlace" name="nativePlace" required>
+                    <option value="">请选择籍贯</option>
+                    <option value="北京">北京</option>
+                    <option value="上海">上海</option>
+                    <option value="广东">广东</option>
+                    <option value="湖南">湖南</option>
+                    <option value="江西">江西</option>
+                    <option value="浙江">浙江</option>
+ 
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="country">国家：</label>
+                <select id="country" name="country" required>
+                    <option value="">请选择国家</option>
+                    <option value="中国">中国</option>
+                    <option value="美国">美国</option>
+                    <option value="英国">英国</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="code">验证码：</label>
+                <div class="input-with-icon">
+                    <input type="text" id="code" name="code" value="" style="width: 160px;">
+                    <span id="codeSpan" onclick="createCode()"
+                        style="background-image: url(./imgs/code.jpg.gif);color: black; margin-left: 10px;"></span>
+                    <span id="codeErrorSpan" class="error-message"></span>
+                </div>
+            </div>
+            <div class="form-group agree-group">
+                <input type="checkbox" id="agree" value="" onclick="checkAgree()">
+                <label for="agree">是否同意本网站协议</label>
+            </div>
+            <button type="submit" id="sub" disabled="disabled">注册</button>
+            <input type="reset" value="重置" class="reset-button"> <!-- 添加重置按钮 -->
+        </form>
+        <a href="login.html" class="login-link">已有账号，直接登录</a>
+    </div>
+	<script type="text/javascript" src="register.js"></script>
+</body>
+</html>

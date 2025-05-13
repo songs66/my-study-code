@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人简历</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 个人简历容器样式，设置溢出处理、宽度和外边距 */
+        .resume-container {
+            overflow: auto;
+            width: 90%;
+            max-width: 1200px;
+            margin: 100px auto;
+        }
+ 
+        /* 简历前四个盒子的容器样式，设置 flex 布局和外边距 */
+        .top-four-boxes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+ 
+        /* 简历盒子样式，设置背景、边框、阴影、过渡效果等 */
+        .resume-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            transition: transform 0.3s ease;
+        }
+ 
+        /* 简历盒子鼠标悬停样式，设置缩放效果 */
+        .resume-box:hover {
+            transform: scale(1.02);
+        }
+ 
+        /* 前四个简历盒子的宽度样式 */
+        .top-four-boxes .resume-box {
+            width: calc(25% - 20px);
+        }
+ 
+        /* 全宽样式，设置宽度为 100% */
+        .full-width {
+            width: 100%;
+        }
+ 
+        /* 简历盒子内 h3 标题样式，设置外边距、颜色、边框和内边距 */
+        .resume-box h3 {
+            margin-top: 0;
+            color: #3498db;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
+ 
+        /* 简历盒子内段落样式，设置外边距和行高 */
+        .resume-box p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+ 
+        /* 简历盒子内无序列表样式，设置左侧内边距 */
+        .resume-box ul {
+            padding-left: 20px;
+        }
+ 
+        /* 简历盒子内图标样式，设置右侧外边距和颜色 */
+        .resume-box i {
+            margin-right: 8px;
+            color: #3498db;
+        }
+ 
+        /* 媒体查询，当屏幕宽度小于 768px 时调整布局 */
+        @media (max-width: 768px) {
+            .top-four-boxes {
+                flex-direction: column;
+            }
+ 
+            .top-four-boxes .resume-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+ 
+<body>
+    <header>
+        <h1>个人网站 - 个人简历</h1>
+        <nav>
+            <ul>
+                <li><a href="main.html">主界面</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="resume-container">
+        <h2>个人简历</h2>
+        <div class="top-four-boxes">
+            <div class="resume-box">
+                <h3>个人信息</h3>
+                <p><i class="fa-solid fa-user"></i> 姓名：</p>
+                <p><i class="fa-solid fa-calendar-days"></i> 出生年月：</p>
+                <p><i class="fa-solid fa-users"></i> 政治面貌：</p>
+                <p><i class="fa-solid fa-location-dot"></i> 籍贯：</p>
+                <p><i class="fa-solid fa-people-group"></i> 民族：</p>
+                <p><i class="fa-solid fa-phone"></i> 联系方式：</p>
+                <p><i class="fa-solid fa-envelope"></i> 电子邮箱：</p>
+            </div>
+            <div class="resume-box">
+                <h3>教育背景</h3>
+                <p><i class="fa-solid fa-graduation-cap"></i> XX大学 -XX专业，</p>
+                <p><i class="fa-solid fa-award"></i> 在校成绩：平均绩点位于年级前列，多次获得校级奖学金</p>
+                <p><i class="fa-solid fa-book-open"></i> 相关课程：数据结构、算法分析、数据库原理、C++、计算机导论、Java等</p>
+                <p><i class="fa-solid fa-trophy"></i> 竞赛成果：参与学校组织的编程竞赛，获得二等奖；参与算法设计比赛，取得优异成绩。</p>
+            </div>
+            <div class="resume-box">
+                <h3>工作经验</h3>
+                <p><i class="fa-solid fa-bullhorn"></i> 在学生会宣传部任职，负责学校活动的海报设计与宣传文案撰写</p>
+                <p><i class="fa-solid fa-calendar-check"></i> 曾参与组织校园科技文化节，协助策划并执行相关活动，提升了组织协调能力</p>
+                <p><i class="fa-solid fa-laptop-code"></i> <strong>学习经历</strong>：在网上进行项目学习，参与公司官网的页面优化与功能迭代，主要工作包括：</p>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> 使用HTML5、CSS3和JavaScript实现页面交互效果，提升用户体验。</li>
+                    <li><i class="fa-solid fa-check"></i> 运用Vue.js框架开发可复用的组件，提高开发效率。</li>
+                    <li><i class="fa-solid fa-check"></i> 与后端开发人员协作，完成数据的展示与交互功能。</li>
+                </ul>
+            </div>
+            <div class="resume-box">
+                <h3>技能特长</h3>
+                <p><i class="fa-brands fa-html5"></i> 熟练掌握HTML5、CSS3、JavaScript，能够独立完成网页前端页面的设计与开发</p>
+                <p><i class="fa-brands fa-vuejs"></i> 熟悉Vue.js框架，参与过基于Vue的项目开发，具备组件化开发思维</p>
+                <p><i class="fa-brands fa-node-js"></i> 了解后端开发基础，如Node.js、MySQL，能够进行简单的前后端数据交互</p>
+                <p><i class="fa-solid fa-image"></i> 掌握Adobe Photoshop软件，可进行图片处理与设计</p>
+                <p><i class="fa-solid fa-language"></i> 具备良好的英语读写能力，通过大学英语四级考试</p>
+            </div>
+        </div>
+        <div class="resume-box full-width">
+            <h3>项目经验</h3>
+            <p><strong>项目名称</strong>：<i class="fa-solid fa-shop"></i> 网上花店销售系统</p>
+            <p><strong>项目描述</strong>：<i class="fa-solid fa-info"></i>
+                该平台旨在为用户提供一个便捷的网上花店购物平台。实现了用户注册登录、商品发布、浏览、搜索、购买等功能。</p>
+            <p><strong>技术栈</strong>：<i class="fa-solid fa-code"></i> 前端使用Vue.js、HTML5、CSS3；后端使用Node.js、MySQL。</p>
+            <p><strong>个人职责</strong>：<i class="fa-solid fa-user-tie"></i> 负责前端页面的开发与交互设计，包括商品列表展示、详情页设计、购物车功能实现等。</p>
+        </div>
+        <div class="resume-box full-width">
+            <h3>自我评价</h3>
+            <p><i class="fa-solid fa-user"></i>
+                我是一个对计算机技术充满热情的人，具备较强的学习能力和团队协作精神。在学习和实践过程中，不断积累技术知识和项目经验，能够快速适应新的工作环境和任务要求。善于沟通交流，能够与团队成员有效协作，共同解决问题。希望能在相关领域继续发展，为公司创造价值。
+            </p>
+        </div>
+    </div>
+</body>
+ 
+</html>
